@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="esS" >
 <head>
 <meta charset="UTF-8">
@@ -88,6 +88,18 @@
 	});	
 
 	$("#id_filtrar").click(function(){
+
+		var p_ciclo = $("#id_ciclo").val();
+		var p_inicio = $("#id_horaInicio").val();
+		var p_fin = $("#id_horaFin").val();
+
+		var parametros = {"ciclo":p_ciclo,"fecInicio":p_inicio,"fecFin":p_fin};
+		
+		$.getJSON("filtraDisponibilidad", parametros, function(data){
+
+			agregarGrilla(data)
+
+		})
 		
 		
 	});

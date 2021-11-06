@@ -8,13 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.empresa.entidad.Ciclo;
+import com.empresa.entidad.Disponibilidad;
 import com.empresa.servicio.CicloService;
+import com.empresa.servicio.DisponibilidadService;
 
 @Controller
 public class ConsultaDisponibilidadController {
 
 	@Autowired
 	private CicloService cicloService;
+
+	@Autowired
+	private DisponibilidadService disponibilidadService;
 	
 
 	@RequestMapping("/")
@@ -29,6 +34,11 @@ public class ConsultaDisponibilidadController {
 	}
 	
 	
-	
+	@RequestMapping("/filtraDisponibilidad")
+	@ResponseBody
+	public List<Disponibilidad> filtra(int ciclo, String fecInicio, String fecFin){
+		return disponibilidadService.listaPorCicloHoraInicioAndFin(ciclo, fecInicio, fecFin);
+	}
+
 	
 }
