@@ -1,4 +1,4 @@
-# DAWI-Sesion07Inicio
+# DAWI-Sesion07Finalizada
 ### Consultas de dos tablas relacionadas en JPA
 
 ## Autor ✒️
