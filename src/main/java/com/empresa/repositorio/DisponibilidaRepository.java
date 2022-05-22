@@ -4,19 +4,14 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import com.empresa.entidad.Disponibilidad;
 
 public interface DisponibilidaRepository extends JpaRepository<Disponibilidad, Integer>{
 
-	@Query("Select d from Disponibilidad  d where"
-										+ " (:p_ciclo is -1  or  d.ciclo = :p_ciclo) and "
-										+ "	(:p_inicio is '' or  d.horaInicio = :p_inicio) and "
-										+ " (:p_fin is ''  or  d.horaFin = :p_fin)")
-	public List<Disponibilidad> listaPorCicloHoraInicioAndFin(
-			@Param("p_ciclo") int idCiclo ,
-			@Param("p_inicio")String horaInicio,
-			@Param("p_fin")String horaFin);
+
+	@Query("Select d from Disponibilidad d where (?1 is -1 or d.ciclo.idCiclo = ?1) and (?2 is '' or d.horaInicio = ?2) and (?3 is'' or d.horaFin = ?3)")
+	public List<Disponibilidad> listaPorCicloHoraInicioAndFin(int idCiclo ,String horaInicio,String horaFin);
+
 	
 }
